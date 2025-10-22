@@ -70,5 +70,3 @@ public class PartB {
         scanner.close();
     }
 }
-
-}
