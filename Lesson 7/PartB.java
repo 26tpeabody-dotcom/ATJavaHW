@@ -11,7 +11,7 @@ public class PartB {
 
         // Ask if it's Monday
         System.out.print("Is it Monday? (yes/no): ");
-        String isMondayInput = scanner.nextLine().trim().toLowerCase();
+        String isMondayInput = scanner.nextLine().toLowerCase();
         boolean isMonday = isMondayInput.equals("yes");
 
         // Prompt for age
