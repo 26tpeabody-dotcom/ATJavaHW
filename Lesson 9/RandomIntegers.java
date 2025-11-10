@@ -2,7 +2,6 @@
 //AT Java
 //Random Integers Average
 
-import java.util.Scanner;
 public class RandomIntegers {
     public static void main(String[] args) {
         int sum = 0;
