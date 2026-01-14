@@ -28,8 +28,8 @@ public class PartC {
         System.out.printf("Average time for binary search: %.2f ns%n", (double) totalBinaryTime / testRuns);
     }
     public static boolean linearSearch(int[] array, int tgtVal) {
-        for (int value : array) {
-            if (value == tgtVal) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == tgtVal) {
                 return true;
             }
         }
