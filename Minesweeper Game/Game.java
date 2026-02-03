@@ -1,3 +1,7 @@
+//Teagan Peabody
+//AT Java
+//Minsweeper Game
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -43,8 +47,8 @@ public class Game {
                 System.out.println("=== CHEAT MODE - Map Revealed ===");
                 displayMap();
                 System.out.println("\nPress Enter to continue...");
-                scanner.nextLine(); // consume newline
-                scanner.nextLine(); // wait for Enter
+                scanner.nextLine();
+                scanner.nextLine();
             } else if (command.equals("r")) {
                 // Reveal tile
                 if (scanner.hasNextInt()) {
@@ -54,6 +58,8 @@ public class Game {
                 } else {
                     System.out.println("Invalid input! Use format: r <row> <col>");
                     scanner.nextLine(); // clear invalid input
+                    System.out.println("\nPress Enter to continue...");
+                    scanner.nextLine();
                 }
             } else if (command.equals("f")) {
                 // Flag/unflag tile
@@ -64,10 +70,14 @@ public class Game {
                 } else {
                     System.out.println("Invalid input! Use format: f <row> <col>");
                     scanner.nextLine(); // clear invalid input
+                    System.out.println("\nPress Enter to continue...");
+                    scanner.nextLine();
                 }
             } else {
                 System.out.println("Invalid command!");
                 scanner.nextLine(); // clear invalid input
+                System.out.println("\nPress Enter to continue...");
+                scanner.nextLine();
             }
         }
 
@@ -87,9 +97,8 @@ public class Game {
         scanner.close();
     }
 
-    /**
-     * Initialize the game by creating the map and board
-     */
+    // Initialize the game by creating the map and board
+
     private static void initializeGame() {
         map = new char[ROWS][COLS];
         board = new char[ROWS][COLS];
@@ -108,10 +117,6 @@ public class Game {
         generateMap();
     }
 
-    /**
-     * Generate the map with random mine placement and calculate adjacent mine
-     * counts
-     */
     private static void generateMap() {
         Random random = new Random();
 
@@ -155,9 +160,6 @@ public class Game {
         }
     }
 
-    /**
-     * Count the number of mines adjacent to a given position
-     */
     private static int countAdjacentMines(int row, int col) {
         int count = 0;
 
@@ -182,16 +184,10 @@ public class Game {
         return count;
     }
 
-    /**
-     * Check if a position is within the board bounds
-     */
     private static boolean isValidPosition(int row, int col) {
         return row >= 0 && row < ROWS && col >= 0 && col < COLS;
     }
 
-    /**
-     * Reveal a tile at the given position
-     */
     private static void revealTile(int row, int col) {
         // Check if position is valid
         if (!isValidPosition(row, col)) {
@@ -226,9 +222,6 @@ public class Game {
         }
     }
 
-    /**
-     * Flag or unflag a tile at the given position
-     */
     private static void flagTile(int row, int col) {
         // Check if position is valid
         if (!isValidPosition(row, col)) {
@@ -236,23 +229,17 @@ public class Game {
             return;
         }
 
-        // Check if tile is already revealed
-        if (board[row][col] != '#' && board[row][col] != 'f') {
-            System.out.println("Cannot flag a revealed tile!");
-            return;
-        }
-
-        // Toggle flag
+        // Flag tile
         if (board[row][col] == '#') {
-            board[row][col] = 'f';
-        } else if (board[row][col] == 'f') {
-            board[row][col] = '#';
+            board[row][col] = 'F'; // Flag the tile
+        } else if (board[row][col] == 'F') {
+            board[row][col] = '#'; // Unflag the tile
+        } else {
+            System.out.println("Cannot flag a revealed tile!");
         }
     }
+    
 
-    /**
-     * Display the game board
-     */
     private static void displayBoard() {
         System.out.println("\n=== MINESWEEPER ===");
         System.out.println("Mines: " + NUM_MINES + " | Revealed: " + revealedTiles + "/" + ((ROWS * COLS) - NUM_MINES));
@@ -289,9 +276,8 @@ public class Game {
         System.out.println();
     }
 
-    /**
-     * Display the map (for cheat mode or game over)
-     */
+    // Display the map (for cheat mode or game over)
+
     private static void displayMap() {
         System.out.println();
 
@@ -326,9 +312,8 @@ public class Game {
         System.out.println();
     }
 
-    /**
-     * Clear the console screen
-     */
+    //Clear the console screen
+
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
