@@ -48,4 +48,34 @@ public class Yard {
         }
     }
 
+    public void printYard(Mower mower) {
+        if (mower == null) {
+            printYard();
+            return;
+        }
+
+        for (int i = 0; i < yard.length; i++) {
+            for (int j = 0; j < yard[i].length; j++) {
+                if (i == mower.getRow() && j == mower.getCol()) {
+                    System.out.print(getMowerSymbol(mower.getDirection()));
+                } else {
+                    System.out.print(yard[i][j]);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+private char getMowerSymbol(int direction) {
+    if (direction == 0) {
+        return '^';
+    } else if (direction == 1) {
+        return '>';
+    } else if (direction == 2) {
+        return 'v';
+    } else {
+        return '<';
+    }
 }
+}
+
